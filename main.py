@@ -126,7 +126,7 @@ def generate_video_from_frames(frames, output_path, fps=30):
     torchvision.io.write_video(output_path, frames, fps=fps, video_codec="libx264")
 
 
-video_path = 'assets/test3.mp4'
+video_path = 'assets/test2.mp4'
 SAM_checkpoint = 'checkpoints\sam_vit_h_4b8939.pth'
 xmem_checkpoint = 'checkpoints\XMem-s012.pth'
 e2fgvi_checkpoint = 'checkpoints\E2FGVI-HQ-CVPR22.pth'
@@ -156,8 +156,7 @@ def Track(video_state, args, prompt, start_num, end_num):
 
     vos_tracking_video(video_state, interactive_state)
 
-period = 89
+period = 2000
 video_state, frame_len = get_frames_from_video(video_path)
 for i in range(0, frame_len, period):
-
     Track(video_state, args, 'tweezers', i, i + period)

@@ -49,9 +49,9 @@ def Get_mask(video_state, model, text_prompt = "tweezers"):
     image_array = np.asarray(image_pil)
     image = draw_image(image_array, masks, boxes, labels)
     image = Image.fromarray(np.uint8(image)).convert("RGB")
-    mask_final = masks[0]
-    for i in range(masks.shape[0]):
-        mask_final = mask_final | masks[i]
+    mask_final = masks[1]
+    # for i in range(masks.shape[0]):
+    #     mask_final = mask_final | masks[i]
     # print(mask_final.shape, mask_final)
     # Image.fromarray(np.array(torch.where(mask_final == True, 255, 0)).astype(np.uint8)).save('mask.png')
     video_state["masks"][video_state["select_frame_number"]] = np.uint8(mask_final)
